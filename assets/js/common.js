@@ -30,10 +30,13 @@ function renderHeader(activeKey) {
   ).join("");
   el.innerHTML = `
     <div class="header-inner">
-      <a class="sign" href="index.html">
-        <span class="sign-icon">${ICONS.coffee}</span>
-        <span class="sign-text">${window.CAFE_CONFIG.siteName}</span>
-      </a>
+      <div class="sign-wrap">
+        <a class="sign" href="index.html">
+          <span class="sign-icon">${ICONS.coffee}</span>
+          <span class="sign-text">${window.CAFE_CONFIG.siteName}</span>
+        </a>
+        <span class="sign-tagline">OPEN · 교실과 일상을 위한 웹앱</span>
+      </div>
       <nav aria-label="주요 메뉴">${links}</nav>
     </div>`;
 }
@@ -100,18 +103,32 @@ function difficultyDots(n) {
   return "●".repeat(v) + "○".repeat(5 - v);
 }
 
-// 선반 위 박스 한 개
+// 개봉 후 30일 안이면 NEW
+function isNew(app) {
+  if (app.status !== "open" || !app.released) return false;
+  const days = (Date.now() - new Date(app.released + "T00:00:00").getTime()) / 86400000;
+  return days >= 0 && days <= 30;
+}
+
+// 선반 위 보드게임 박스 한 개
 function boxHtml(app, index) {
-  const heights = [168, 150, 176, 158, 140];
+  const heights = [164, 150, 172, 156, 144];
   const h = heights[index % heights.length];
   const status = app.status || "sealed";
+  const tag = (isNew(app) ? "NEW · " : "") + (STATUS_LABEL[status] || "");
   return `
     <a class="box box--${status}" href="rulebook.html?id=${encodeURIComponent(app.id)}"
-       style="--box-color:${escapeHtml(app.color || "#B5432A")}; --box-h:${h}px">
-      <span class="box-tag">${STATUS_LABEL[status] || ""}</span>
+       style="--box-color:${escapeHtml(app.color || "#B5432A")}; --box-accent:${escapeHtml(app.accent || "#F2B33D")}; --box-h:${h}px">
+      <span class="box-tag">${tag}</span>
       <span class="box-name">${escapeHtml(app.name)}</span>
-      ${status === "sealed" ? '<span class="box-sticker">COMING SOON</span>' : ""}
+      ${status === "sealed" ? '<span class="box-sticker">COMING SOON</span>' : `<span class="box-teaser">${escapeHtml(app.boxLine || app.teaser)}</span>`}
     </a>`;
+}
+
+// 아직 박스가 들어오지 않은 자리
+function slotHtml(index) {
+  const heights = [140, 128, 148];
+  return `<span class="slot" style="height:${heights[index % heights.length]}px">곧 입고</span>`;
 }
 
 // 비어 있는 자리를 채우는 소품
@@ -121,9 +138,10 @@ function propsHtml(seed) {
     ["plant", "meeple"],
     ["dice", "coffee", "meeple"]
   ];
-  return sets[seed % sets.length]
+  const items = sets[seed % sets.length]
     .map((k) => `<span class="prop prop--${k}">${ICONS[k]}</span>`)
     .join("");
+  return `<span class="props">${items}</span>`;
 }
 
 // 플레이 로그 항목 (로비의 최근 소식과 플레이 로그 페이지에서 함께 사용)
