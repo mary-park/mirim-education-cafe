@@ -1,8 +1,23 @@
 {
   "floors": [
-    { "id": "class", "floor": 1, "name": "수업용", "desc": "교실에서 학생들과 함께 쓰는 앱" },
-    { "id": "work", "floor": 2, "name": "업무용", "desc": "선생님의 업무를 덜어 주는 앱" },
-    { "id": "life", "floor": 3, "name": "생활·게임", "desc": "일상과 놀이를 위한 앱" }
+    {
+      "id": "class",
+      "floor": 1,
+      "name": "수업용",
+      "desc": "교실에서 학생들과 함께 쓰는 앱"
+    },
+    {
+      "id": "work",
+      "floor": 2,
+      "name": "업무용",
+      "desc": "선생님의 업무를 덜어 주는 앱"
+    },
+    {
+      "id": "life",
+      "floor": 3,
+      "name": "생활·게임",
+      "desc": "일상과 놀이를 위한 앱"
+    }
   ],
   "apps": [
     {
@@ -11,12 +26,18 @@
       "floor": "life",
       "status": "sealed",
       "color": "#6B4FA0",
-      "teaser": "나를 여러 갈래로 비춰 보는 성향 분석 서비스",
-      "summary": "",
-      "audience": "",
-      "time": "",
-      "difficulty": 0,
-      "tech": [],
+      "teaser": "사주·MBTI·애니어그램·점성술로 나와 우리를 입체적으로 비춰 보는 서비스",
+      "summary": "서로 다른 네 가지 관점(사주, MBTI, 애니어그램, 서양 점성술)을 한데 모아 나의 성향을 입체적으로 살펴보고, 두 사람의 관계를 조화롭게 이해하도록 돕는 서비스예요. '나 사용설명서'와 '우리 둘 사용설명서', 대운·세운 흐름까지 볼 수 있고, 결과는 이미지로 저장하거나 기기 안 보관함에 모아 둘 수 있어요. 원본 출생정보는 보관함이나 기록에 따로 저장하지 않아요. 결과는 자기 이해를 위한 참고 자료이며 진단이나 예언이 아니에요.",
+      "audience": "나와 관계를 돌아보고 싶은 누구나",
+      "time": "5~10분",
+      "difficulty": 2,
+      "tech": [
+        "React",
+        "Vite",
+        "TypeScript",
+        "Gemini API",
+        "Cloudflare Workers"
+      ],
       "url": "",
       "screenshots": [],
       "released": ""

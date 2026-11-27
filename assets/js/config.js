@@ -16,5 +16,5 @@ window.CAFE_CONFIG = {
   },
 
   // 채택된 제안만 모아 둔 시트 탭을 '웹에 게시(CSV)'한 주소 (선택)
-  adoptedCsvUrl: ""
+  adoptedCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vR_-zmbpVbqZAPXtmoJWLrnJjI5sA7_xs9a94w1NzMNuAM_YwO9V7zXgafaJ4KYn7FhKFECN6ZQQRL9/pub?gid=1314574463&single=true&output=csv"
 };
