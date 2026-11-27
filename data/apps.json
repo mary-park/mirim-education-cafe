@@ -1,0 +1,25 @@
+{
+  "floors": [
+    { "id": "class", "floor": 1, "name": "수업용", "desc": "교실에서 학생들과 함께 쓰는 앱" },
+    { "id": "work", "floor": 2, "name": "업무용", "desc": "선생님의 업무를 덜어 주는 앱" },
+    { "id": "life", "floor": 3, "name": "생활·게임", "desc": "일상과 놀이를 위한 앱" }
+  ],
+  "apps": [
+    {
+      "id": "dawon",
+      "name": "다원",
+      "floor": "life",
+      "status": "sealed",
+      "color": "#6B4FA0",
+      "teaser": "나를 여러 갈래로 비춰 보는 성향 분석 서비스",
+      "summary": "",
+      "audience": "",
+      "time": "",
+      "difficulty": 0,
+      "tech": [],
+      "url": "",
+      "screenshots": [],
+      "released": ""
+    }
+  ]
+}
