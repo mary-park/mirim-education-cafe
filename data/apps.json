@@ -55,7 +55,8 @@
       ],
       "released": "2026-11-27",
       "accent": "#F2B33D",
-      "boxLine": "나와 우리를 비춰 보는 성향 탐색"
+      "boxLine": "나와 우리를 비춰 보는 성향 탐색",
+      "cover": "assets/img/apps/dawon-cover.webp"
     }
   ]
 }

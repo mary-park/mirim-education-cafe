@@ -25,6 +25,7 @@
   "status": "open",
   "color": "#2B2522",
   "accent": "#F2B33D",
+  "cover": "assets/img/apps/dawon-cover.webp",
   "boxLine": "선반 박스에 들어갈 아주 짧은 문구",
   "teaser": "룰북 표지에 들어갈 한 줄 소개",
   "summary": "룰북에 들어갈 자세한 소개",
@@ -39,6 +40,7 @@
 ```
 
 - `floor`: `class`(1층 수업용) · `work`(2층 업무용) · `life`(3층 생활·게임)
+- `cover`에 세로형(3:4) 그림을 넣으면 선반 박스·컬렉션 카드·룰북 표지에 박스 그림으로 나옵니다.
 - `color`는 박스 바탕색, `accent`는 박스 윗면 띠와 상태 글자 색입니다. 개봉 후 30일 동안은 박스에 NEW가 붙습니다.
 - `status`: `sealed`(개봉 예정) → `brewing`(개발 중) → `open`(개봉 완료)
 - 층을 늘리려면 `floors`에 항목을 추가합니다.
@@ -73,3 +75,7 @@ python -m http.server 8000
 
 저장소 **Settings → Pages → Build and deployment**에서 Source를 `Deploy from a branch`, Branch를 `main` / `/ (root)`로 저장하면
 `https://mary-park.github.io/mirim-education-cafe/`에 공개됩니다.
+
+## 이미지
+
+`assets/img/cafe/`의 카페 배경·소품·나뭇결과 `assets/img/apps/dawon-cover.webp`는 Higgsfield(GPT Image 2.6)로 만든 일러스트입니다.

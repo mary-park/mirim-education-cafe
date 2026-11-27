@@ -20,8 +20,9 @@ renderFooter();
         ? list
             .map(
               (a) => `
-          <a class="card card--${escapeHtml(a.status)}" href="rulebook.html?id=${encodeURIComponent(a.id)}" style="--box-color:${escapeHtml(a.color || "#B5432A")}; --box-accent:${escapeHtml(a.accent || "#F2B33D")}">
+          <a class="card card--${escapeHtml(a.status)}${a.cover ? " has-cover" : ""}" href="rulebook.html?id=${encodeURIComponent(a.id)}" style="--box-color:${escapeHtml(a.color || "#B5432A")}; --box-accent:${escapeHtml(a.accent || "#F2B33D")}">
             <span class="card-band"></span>
+            ${a.cover ? `<img class="card-art" src="${escapeHtml(a.cover)}" alt="" loading="lazy">` : ""}
             <div class="card-body">
               <span class="card-tag">${(isNew(a) ? "NEW · " : "") + (STATUS_LABEL[a.status] || "")}</span>
               <h2>${escapeHtml(a.name)}</h2>

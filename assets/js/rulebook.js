@@ -20,9 +20,12 @@ renderFooter();
 
     const cover = `
       <header class="rulebook-cover ${app.status !== "open" ? "is-sealed" : ""}">
-        <div class="eyebrow">${escapeHtml(floorText)} · ${STATUS_LABEL[app.status] || ""}</div>
-        <h1>${escapeHtml(app.name)}</h1>
-        <p>${escapeHtml(app.teaser)}</p>
+        <div class="cover-text">
+          <div class="eyebrow">${escapeHtml(floorText)} · ${STATUS_LABEL[app.status] || ""}</div>
+          <h1>${escapeHtml(app.name)}</h1>
+          <p>${escapeHtml(app.teaser)}</p>
+        </div>
+        ${app.cover && app.status === "open" ? `<img class="cover-art" src="${escapeHtml(app.cover)}" alt="${escapeHtml(app.name)} 박스 그림">` : ""}
       </header>`;
 
     if (app.status !== "open") {

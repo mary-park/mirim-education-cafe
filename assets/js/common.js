@@ -123,8 +123,9 @@ function boxHtml(app, index) {
   const status = app.status || "sealed";
   const tag = (isNew(app) ? "NEW · " : "") + (STATUS_LABEL[status] || "");
   return `
-    <a class="box box--${status}" href="rulebook.html?id=${encodeURIComponent(app.id)}"
+    <a class="box box--${status}${app.cover ? " has-cover" : ""}" href="rulebook.html?id=${encodeURIComponent(app.id)}"
        style="--box-color:${escapeHtml(app.color || "#B5432A")}; --box-accent:${escapeHtml(app.accent || "#F2B33D")}; --box-h:${h}px">
+      ${app.cover ? `<img class="box-art" src="${escapeHtml(app.cover)}" alt="" loading="lazy">` : ""}
       <span class="box-tag">${tag}</span>
       <span class="box-name">${escapeHtml(app.name)}</span>
       ${status === "sealed" ? '<span class="box-sticker">COMING SOON</span>' : `<span class="box-teaser">${escapeHtml(app.boxLine || app.teaser)}</span>`}
@@ -145,9 +146,9 @@ function propsHtml(seed) {
     ["dice", "coffee", "meeple"]
   ];
   const items = sets[seed % sets.length]
-    .map((k) => `<span class="prop prop--${k}">${ICONS[k]}</span>`)
+    .map((k) => `<img class="prop prop--${k}" src="assets/img/cafe/prop-${k}.webp" alt="" loading="lazy">`)
     .join("");
-  return `<span class="props">${items}</span>`;
+  return `<span class="props" aria-hidden="true">${items}</span>`;
 }
 
 // 플레이 로그 항목 (로비의 최근 소식과 플레이 로그 페이지에서 함께 사용)

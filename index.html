@@ -23,15 +23,15 @@
 <header id="site-header"></header>
 <main>
   <section class="lobby-hero">
-    <div class="lobby-intro">
+    <div class="hero-text">
       <div class="eyebrow">WELCOME TO</div>
       <h1>햇살 드는 원목 선반에서<br>오늘의 앱을 골라 보세요</h1>
       <p>교실과 일상을 위해 만든 웹앱을 보드게임처럼 진열했어요. 박스를 꺼내면 룰북이 펼쳐져요.</p>
+      <div class="hero-actions">
+        <a class="btn btn--primary" href="#shelf">선반 둘러보기</a>
+        <a class="btn btn--ghost" href="suggest.html">확장팩 제안하기</a>
+      </div>
     </div>
-    <aside class="chalkboard" aria-labelledby="menu-title">
-      <h2 id="menu-title">오늘의 메뉴판</h2>
-      <div id="menu" aria-live="polite"><div class="chalk-row"><span>메뉴를 적는 중…</span></div></div>
-    </aside>
   </section>
 
   <section aria-label="웹앱 선반">
@@ -46,10 +46,10 @@
       </div>
       <ol class="log-list log-list--compact" id="news"></ol>
     </div>
-    <a class="cta-card" href="suggest.html">
-      <span>이런 앱이 있으면 좋겠어요!</span>
-      <b>확장팩 제안하기 →</b>
-    </a>
+    <aside class="chalkboard" aria-labelledby="menu-title">
+      <h2 id="menu-title">오늘의 메뉴판</h2>
+      <div id="menu" aria-live="polite"><div class="chalk-row"><span>메뉴를 적는 중…</span></div></div>
+    </aside>
   </section>
 </main>
 <footer id="site-footer"></footer>
