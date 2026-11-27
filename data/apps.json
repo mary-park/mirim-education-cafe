@@ -24,10 +24,10 @@
       "id": "dawon",
       "name": "다원",
       "floor": "life",
-      "status": "sealed",
-      "color": "#6B4FA0",
-      "teaser": "사주·MBTI·애니어그램·점성술로 나와 우리를 입체적으로 비춰 보는 서비스",
-      "summary": "서로 다른 네 가지 관점(사주, MBTI, 애니어그램, 서양 점성술)을 한데 모아 나의 성향을 입체적으로 살펴보고, 두 사람의 관계를 조화롭게 이해하도록 돕는 서비스예요. '나 사용설명서'와 '우리 둘 사용설명서', 대운·세운 흐름까지 볼 수 있고, 결과는 이미지로 저장하거나 기기 안 보관함에 모아 둘 수 있어요. 원본 출생정보는 보관함이나 기록에 따로 저장하지 않아요. 결과는 자기 이해를 위한 참고 자료이며 진단이나 예언이 아니에요.",
+      "status": "open",
+      "color": "#2B2522",
+      "teaser": "사주·MBTI·애니어그램·Big Five·별자리로 나와 우리를 입체적으로 비춰 보는 서비스",
+      "summary": "사주, 서양 점성술, MBTI, 애니어그램, Big Five라는 다섯 가지 관점을 겹쳐 나의 성향을 입체적으로 살펴보고, 두 사람의 관계를 조화롭게 이해하도록 돕는 서비스예요. 내 유형을 모르면 MBTI·애니어그램·Big Five 간이 테스트부터 해 볼 수 있고, '나 사용설명서'와 '우리 둘 사용설명서', 대운·세운 흐름까지 볼 수 있어요. 결과는 이미지로 저장하거나 브라우저 보관함에 모아 둘 수 있고, 원본 출생정보는 따로 저장하지 않아요. 결과는 자기 이해를 위한 참고 자료이며 진단이나 예언이 아니에요.",
       "audience": "나와 관계를 돌아보고 싶은 누구나",
       "time": "5~10분",
       "difficulty": 2,
@@ -38,9 +38,22 @@
         "Gemini API",
         "Cloudflare Workers"
       ],
-      "url": "",
-      "screenshots": [],
-      "released": ""
+      "url": "https://persona-compass.pmr9832.workers.dev/",
+      "screenshots": [
+        {
+          "src": "assets/img/apps/dawon-home.jpg",
+          "alt": "다원 첫 화면: 나 분석하기와 우리 궁합 보기 버튼"
+        },
+        {
+          "src": "assets/img/apps/dawon-features.jpg",
+          "alt": "간이 테스트 세 가지와 다원이 사람을 바라보는 방식 소개"
+        },
+        {
+          "src": "assets/img/apps/dawon-mobile.jpg",
+          "alt": "휴대폰에서 본 다원 첫 화면"
+        }
+      ],
+      "released": "2026-11-27"
     }
   ]
 }

@@ -136,7 +136,8 @@ svg .fill { fill: currentColor; stroke: none; }
 .spec dt { font-size: 13px; color: var(--ink-soft); font-weight: 700; }
 .spec dd { margin: 4px 0 0; font-size: 16px; }
 .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
-.shots img { width: 100%; border-radius: 12px; border: 1px solid var(--wall-dark); }
+.shots a { display: block; }
+.shots img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: top; border-radius: 12px; border: 1px solid var(--wall-dark); display: block; }
 .sealed-panel { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; padding: 24px 0; }
 .sealed-panel .prop { color: var(--wood); width: 72px; height: 72px; }
 .rulebook-actions { display: flex; gap: 12px; flex-wrap: wrap; }

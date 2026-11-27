@@ -42,22 +42,22 @@ renderFooter();
       ["사용 시간", app.time],
       ["난이도", app.difficulty ? difficultyDots(app.difficulty) : ""],
       ["구성물(사용 기술)", (app.tech || []).join(", ")],
-      ["개봉일", app.released]
+      ["개봉일", app.released ? formatDate(app.released) : ""]
     ].filter(([, v]) => v);
 
     const shots = (app.screenshots || [])
-      .map((s) => `<img src="${escapeHtml(s.src)}" alt="${escapeHtml(s.alt || app.name + " 화면")}" loading="lazy">`)
+      .map((s) => `<a href="${escapeHtml(s.src)}" target="_blank" rel="noopener"><img src="${escapeHtml(s.src)}" alt="${escapeHtml(s.alt || app.name + " 화면")}" loading="lazy"></a>`)
       .join("");
 
     el.innerHTML = `${cover}
       <div class="rulebook-body">
         ${app.summary ? `<section><h2>어떤 앱인가요?</h2><p>${escapeHtml(app.summary)}</p></section>` : ""}
-        ${specs.length ? `<dl class="spec-grid">${specs.map(([k, v]) => `<div class="spec"><dt>${k}</dt><dd>${escapeHtml(v)}</dd></div>`).join("")}</dl>` : ""}
-        ${shots ? `<section><h2>게임 화면</h2><div class="shots">${shots}</div></section>` : ""}
         <div class="rulebook-actions">
           ${app.url ? `<a class="btn btn--primary" href="${escapeHtml(app.url)}" target="_blank" rel="noopener">플레이하기</a>` : ""}
           ${(app.links || []).map((l) => `<a class="btn btn--ghost" href="${escapeHtml(l.url)}" target="_blank" rel="noopener">${escapeHtml(l.label)}</a>`).join("")}
         </div>
+        ${specs.length ? `<dl class="spec-grid">${specs.map(([k, v]) => `<div class="spec"><dt>${k}</dt><dd>${escapeHtml(v)}</dd></div>`).join("")}</dl>` : ""}
+        ${shots ? `<section><h2>앱 화면</h2><div class="shots">${shots}</div></section>` : ""}
       </div>`;
   } catch (e) {
     showError(el, "룰북을 불러오지 못했어요.");
