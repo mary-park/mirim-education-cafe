@@ -5,13 +5,13 @@ window.CAFE_CONFIG = {
 
   googleForm: {
     // 예: "https://docs.google.com/forms/d/e/XXXXXXXX/formResponse"
-    action: "",
+    action: "https://docs.google.com/forms/d/e/1FAIpQLSfV5sT6qpGF5bs2UOElGqbzuSWiF77ZxFdxfdkDm6YKj2frjg/formResponse",
     // 구글 폼 각 질문의 entry 번호 (예: "entry.123456789")
     fields: {
-      title: "",
-      problem: "",
-      audience: "",
-      nickname: ""
+      title: "entry.971979800",
+      problem: "entry.1989186631",
+      audience: "entry.363739108",
+      nickname: "entry.372314982"
     }
   },
 
