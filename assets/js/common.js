@@ -11,6 +11,12 @@ const STATUS_LABEL = { open: "개봉 완료", brewing: "개발 중", sealed: "�
 
 // 선이 있는 단순한 SVG 아이콘 (장식용)
 const ICONS = {
+  clock:
+    '<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="17"/><path d="M24 14v10l7 5"/></svg>',
+  tools:
+    '<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="9" y="14" width="30" height="24" rx="4"/><path d="M18 14v-4h12v4M9 24h30"/></svg>',
+  calendar:
+    '<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="9" y="11" width="30" height="28" rx="4"/><path d="M9 20h30M17 7v8M31 7v8"/></svg>',
   coffee:
     '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 18h24v12a10 10 0 0 1-10 10h-4a10 10 0 0 1-10-10z"/><path d="M34 21h3a5 5 0 0 1 0 10h-3"/><path d="M17 8c0 3 3 3 3 6M24 8c0 3 3 3 3 6"/></svg>',
   dice:

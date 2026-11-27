@@ -20,15 +20,17 @@ renderFooter();
         ? list
             .map(
               (a) => `
-          <a class="card" href="rulebook.html?id=${encodeURIComponent(a.id)}" style="--box-color:${escapeHtml(a.color || "#B5432A")}">
-            <div class="card-top"><span>${escapeHtml(floorName[a.floor] || "")}</span><span>${STATUS_LABEL[a.status] || ""}</span></div>
+          <a class="card card--${escapeHtml(a.status)}" href="rulebook.html?id=${encodeURIComponent(a.id)}" style="--box-color:${escapeHtml(a.color || "#B5432A")}; --box-accent:${escapeHtml(a.accent || "#F2B33D")}">
+            <span class="card-band"></span>
             <div class="card-body">
+              <span class="card-tag">${(isNew(a) ? "NEW · " : "") + (STATUS_LABEL[a.status] || "")}</span>
               <h2>${escapeHtml(a.name)}</h2>
-              <p>${escapeHtml(a.status === "open" ? a.summary || a.teaser : a.teaser)}</p>
+              <p>${escapeHtml(a.teaser)}</p>
             </div>
+            <div class="card-foot"><span>${escapeHtml(floorName[a.floor] || "")}</span><span>룰북 보기 →</span></div>
           </a>`
             )
-            .join("")
+            .join("") + '<div class="card-slot">곧 입고</div>'
         : '<p class="notice">이 층은 아직 비어 있어요. 곧 새 박스가 들어올 거예요.</p>';
     };
 

@@ -16,10 +16,11 @@ renderFooter();
     const floorText = floor ? `${floor.floor}층 ${floor.name}` : "";
     document.title = `${app.name} 룰북 · ${window.CAFE_CONFIG.siteName}`;
     el.style.setProperty("--box-color", app.color || "#B5432A");
+    el.style.setProperty("--box-accent", app.accent || "#F2B33D");
 
     const cover = `
       <header class="rulebook-cover ${app.status !== "open" ? "is-sealed" : ""}">
-        <div class="eyebrow" style="color:#fff">${escapeHtml(floorText)} · ${STATUS_LABEL[app.status] || ""}</div>
+        <div class="eyebrow">${escapeHtml(floorText)} · ${STATUS_LABEL[app.status] || ""}</div>
         <h1>${escapeHtml(app.name)}</h1>
         <p>${escapeHtml(app.teaser)}</p>
       </header>`;
@@ -38,12 +39,12 @@ renderFooter();
     }
 
     const specs = [
-      ["누가 쓰나요", app.audience],
-      ["사용 시간", app.time],
-      ["난이도", app.difficulty ? difficultyDots(app.difficulty) : ""],
-      ["구성물(사용 기술)", (app.tech || []).join(", ")],
-      ["개봉일", app.released ? formatDate(app.released) : ""]
-    ].filter(([, v]) => v);
+      ["meeple", "누가 쓰나요", app.audience],
+      ["clock", "사용 시간", app.time],
+      ["dice", "난이도", app.difficulty ? difficultyDots(app.difficulty) : ""],
+      ["tools", "구성물(사용 기술)", (app.tech || []).join(", ")],
+      ["calendar", "개봉일", app.released ? formatDate(app.released) : ""]
+    ].filter(([, , v]) => v);
 
     const shots = (app.screenshots || [])
       .map((s) => `<a href="${escapeHtml(s.src)}" target="_blank" rel="noopener"><img src="${escapeHtml(s.src)}" alt="${escapeHtml(s.alt || app.name + " 화면")}" loading="lazy"></a>`)
@@ -56,7 +57,7 @@ renderFooter();
           ${app.url ? `<a class="btn btn--primary" href="${escapeHtml(app.url)}" target="_blank" rel="noopener">플레이하기</a>` : ""}
           ${(app.links || []).map((l) => `<a class="btn btn--ghost" href="${escapeHtml(l.url)}" target="_blank" rel="noopener">${escapeHtml(l.label)}</a>`).join("")}
         </div>
-        ${specs.length ? `<dl class="spec-grid">${specs.map(([k, v]) => `<div class="spec"><dt>${k}</dt><dd>${escapeHtml(v)}</dd></div>`).join("")}</dl>` : ""}
+        ${specs.length ? `<div class="box-back"><div class="box-back-title">박스 뒷면 정보</div><dl class="spec-grid">${specs.map(([icon, k, v]) => `<div class="spec"><span class="spec-icon">${ICONS[icon]}</span><div><dt>${k}</dt><dd>${escapeHtml(v)}</dd></div></div>`).join("")}</dl></div>` : ""}
         ${shots ? `<section><h2>앱 화면</h2><div class="shots">${shots}</div></section>` : ""}
       </div>`;
   } catch (e) {
