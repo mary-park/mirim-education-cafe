@@ -3,6 +3,7 @@
 const NAV = [
   { href: "index.html", label: "로비", key: "lobby" },
   { href: "collection.html", label: "컬렉션", key: "collection" },
+  { href: "log.html", label: "플레이 로그", key: "log" },
   { href: "suggest.html", label: "확장팩 제안함", key: "suggest" }
 ];
 
@@ -47,10 +48,45 @@ function renderFooter() {
     </div>`;
 }
 
-async function loadCafeData() {
-  const res = await fetch("data/apps.json", { cache: "no-cache" });
-  if (!res.ok) throw new Error("apps.json을 불러오지 못했어요");
+async function loadJson(path) {
+  const res = await fetch(path, { cache: "no-cache" });
+  if (!res.ok) throw new Error(`${path}을(를) 불러오지 못했어요`);
   return res.json();
+}
+
+const loadCafeData = () => loadJson("data/apps.json");
+const loadLog = () => loadJson("data/log.json");
+
+const LOG_TYPE = { release: "신작 개봉", update: "업데이트", notice: "카페 소식", adopted: "제안 채택" };
+
+// 2026-11-27 → 2026. 11. 27.
+function formatDate(iso) {
+  const [y, m, d] = String(iso || "").split("-");
+  return y && m && d ? `${y}. ${Number(m)}. ${Number(d)}.` : escapeHtml(iso);
+}
+
+// 따옴표·쉼표·줄바꿈을 처리하는 간단한 CSV 해석기 → [{열이름: 값}]
+function parseCsv(text) {
+  const rows = [];
+  let row = [], cell = "", quoted = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (quoted) {
+      if (c === '"' && text[i + 1] === '"') { cell += '"'; i++; }
+      else if (c === '"') quoted = false;
+      else cell += c;
+    } else if (c === '"') quoted = true;
+    else if (c === ",") { row.push(cell); cell = ""; }
+    else if (c === "\n" || c === "\r") {
+      if (c === "\r" && text[i + 1] === "\n") i++;
+      row.push(cell); rows.push(row); row = []; cell = "";
+    } else cell += c;
+  }
+  if (cell || row.length) { row.push(cell); rows.push(row); }
+  const [head, ...body] = rows.filter((r) => r.some((v) => v.trim()));
+  if (!head) return [];
+  const keys = head.map((h) => h.trim());
+  return body.map((r) => Object.fromEntries(keys.map((k, i) => [k, (r[i] || "").trim()])));
 }
 
 function escapeHtml(text) {
@@ -88,6 +124,36 @@ function propsHtml(seed) {
   return sets[seed % sets.length]
     .map((k) => `<span class="prop prop--${k}">${ICONS[k]}</span>`)
     .join("");
+}
+
+// 플레이 로그 항목 (로비의 최근 소식과 플레이 로그 페이지에서 함께 사용)
+function logItemHtml(entry, appsById) {
+  const app = entry.app ? appsById[entry.app] : null;
+  const link = app ? ` <a href="rulebook.html?id=${encodeURIComponent(app.id)}">${escapeHtml(app.name)} 룰북 보기</a>` : "";
+  return `
+    <li class="log-item log-item--${escapeHtml(entry.type || "notice")}">
+      <div class="log-meta">
+        <time datetime="${escapeHtml(entry.date)}">${formatDate(entry.date)}</time>
+        <span class="log-type">${LOG_TYPE[entry.type] || "카페 소식"}</span>
+      </div>
+      <h3>${escapeHtml(entry.title)}</h3>
+      ${entry.body ? `<p>${escapeHtml(entry.body)}${link}</p>` : link ? `<p>${link}</p>` : ""}
+    </li>`;
+}
+
+async function renderLog(target, limit) {
+  try {
+    const [{ entries }, { apps }] = await Promise.all([loadLog(), loadCafeData()]);
+    const appsById = Object.fromEntries(apps.map((a) => [a.id, a]));
+    const sorted = [...entries].sort((a, b) => String(b.date).localeCompare(String(a.date)));
+    const list = limit ? sorted.slice(0, limit) : sorted;
+    target.innerHTML = list.length
+      ? list.map((e) => logItemHtml(e, appsById)).join("")
+      : '<li class="notice">아직 기록이 없어요.</li>';
+  } catch (e) {
+    target.innerHTML = '<li class="notice">기록을 불러오지 못했어요.</li>';
+    console.error(e);
+  }
 }
 
 function showError(target, message) {

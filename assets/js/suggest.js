@@ -59,3 +59,34 @@ renderFooter();
     }
   });
 })();
+
+// 채택된 제안 목록: config.js의 adoptedCsvUrl(웹에 게시한 CSV)이 있을 때만 표시
+// CSV 첫 줄 열 이름: 제목, 내용, 대상, 상태  (상태 예: 검토 중 / 개발 중 / 개봉 완료)
+(async () => {
+  const url = window.CAFE_CONFIG.adoptedCsvUrl;
+  if (!url) return;
+  const section = document.getElementById("adopted-section");
+  const list = document.getElementById("adopted");
+  try {
+    const res = await fetch(url, { cache: "no-cache" });
+    if (!res.ok) throw new Error("CSV를 불러오지 못했어요");
+    const rows = parseCsv(await res.text()).filter((r) => r["제목"]);
+    if (!rows.length) return;
+    list.innerHTML = rows
+      .map(
+        (r) => `
+        <li class="adopted-item">
+          <div class="adopted-top">
+            <h3>${escapeHtml(r["제목"])}</h3>
+            ${r["상태"] ? `<span class="pill">${escapeHtml(r["상태"])}</span>` : ""}
+          </div>
+          ${r["내용"] ? `<p>${escapeHtml(r["내용"])}</p>` : ""}
+          ${r["대상"] ? `<p class="adopted-for">추천 대상 · ${escapeHtml(r["대상"])}</p>` : ""}
+        </li>`
+      )
+      .join("");
+    section.hidden = false;
+  } catch (e) {
+    console.error(e);
+  }
+})();

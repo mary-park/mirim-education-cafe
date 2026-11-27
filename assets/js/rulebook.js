@@ -29,8 +29,8 @@ renderFooter();
         <div class="rulebook-body">
           <div class="sealed-panel">
             <span class="prop">${ICONS.coffee}</span>
-            <h2>아직 포장을 뜯는 중이에요</h2>
-            <p>이 박스는 곧 개봉됩니다. 커피 한 잔 하며 조금만 기다려 주세요.</p>
+            <h2>${app.status === "brewing" ? "지금 열심히 만드는 중이에요" : "아직 포장을 뜯는 중이에요"}</h2>
+            <p>${app.status === "brewing" ? "개발이 끝나면 이 자리에서 바로 플레이할 수 있어요." : "이 박스는 곧 개봉됩니다. 커피 한 잔 하며 조금만 기다려 주세요."}</p>
             <a class="btn btn--ghost" href="index.html">다른 박스 둘러보기</a>
           </div>
         </div>`;
@@ -54,7 +54,10 @@ renderFooter();
         ${app.summary ? `<section><h2>어떤 앱인가요?</h2><p>${escapeHtml(app.summary)}</p></section>` : ""}
         ${specs.length ? `<dl class="spec-grid">${specs.map(([k, v]) => `<div class="spec"><dt>${k}</dt><dd>${escapeHtml(v)}</dd></div>`).join("")}</dl>` : ""}
         ${shots ? `<section><h2>게임 화면</h2><div class="shots">${shots}</div></section>` : ""}
-        ${app.url ? `<div><a class="btn btn--primary" href="${escapeHtml(app.url)}" target="_blank" rel="noopener">플레이하기</a></div>` : ""}
+        <div class="rulebook-actions">
+          ${app.url ? `<a class="btn btn--primary" href="${escapeHtml(app.url)}" target="_blank" rel="noopener">플레이하기</a>` : ""}
+          ${(app.links || []).map((l) => `<a class="btn btn--ghost" href="${escapeHtml(l.url)}" target="_blank" rel="noopener">${escapeHtml(l.label)}</a>`).join("")}
+        </div>
       </div>`;
   } catch (e) {
     showError(el, "룰북을 불러오지 못했어요.");

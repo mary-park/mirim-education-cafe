@@ -1,6 +1,7 @@
 // 로비: 층별 선반과 개봉 현황
 renderHeader("lobby");
 renderFooter();
+renderLog(document.getElementById("news"), 3);
 
 (async () => {
   const shelf = document.getElementById("shelf");
