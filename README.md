@@ -11,6 +11,7 @@
 | `rulebook.html?id=앱아이디` | 룰북 | 앱 상세 소개, 플레이하기 버튼 |
 | `log.html` | 플레이 로그 | 개봉·업데이트 기록 (로비에는 최근 3개) |
 | `suggest.html` | 확장팩 제안함 | 방문자 아이디어 제안서 (구글 폼으로 전송), 채택된 제안 목록 |
+| `owner.html` | 카페 사장님 | 개발자 소개 (`data/owner.json`에서 수정) |
 | `404.html` | - | 없는 주소로 들어왔을 때 |
 
 ## 새 앱을 공개하는 방법
@@ -79,3 +80,7 @@ python -m http.server 8000
 ## 이미지
 
 `assets/img/cafe/`의 카페 배경·소품·나뭇결과 `assets/img/apps/dawon-cover.webp`는 Higgsfield(GPT Image 2.6)로 만든 일러스트입니다.
+
+## 사장님 소개 고치기
+
+`data/owner.json`에서 인사말(`greeting`), 프로필(`profile`), 좋아하는 것(`likes`), 카페를 연 이유(`story`)를 고칩니다. 캐릭터 그림은 `assets/img/cafe/owner.webp`이고, 다른 버전은 `owner-alt.webp`입니다(`photo` 값을 바꾸면 교체).

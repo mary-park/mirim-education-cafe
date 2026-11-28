@@ -4,7 +4,8 @@ const NAV = [
   { href: "index.html", label: "로비", key: "lobby" },
   { href: "collection.html", label: "컬렉션", key: "collection" },
   { href: "log.html", label: "플레이 로그", key: "log" },
-  { href: "suggest.html", label: "확장팩 제안함", key: "suggest" }
+  { href: "suggest.html", label: "확장팩 제안함", key: "suggest" },
+  { href: "owner.html", label: "카페 사장님", key: "owner" }
 ];
 
 const STATUS_LABEL = { open: "개봉 완료", brewing: "개발 중", sealed: "개봉 예정" };

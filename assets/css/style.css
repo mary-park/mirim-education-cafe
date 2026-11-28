@@ -247,6 +247,36 @@ fieldset.field { border: 0; padding: 0; margin: 0 0 18px; }
 .adopted-for { font-size: 13px !important; }
 .pill { flex-shrink: 0; background: var(--wall-dark); border-radius: 999px; padding: 2px 10px; font-size: 12px; font-weight: 700; }
 
+/* 카페 사장님 */
+.owner-hero { display: flex; gap: 32px; align-items: center; flex-wrap: wrap; background: linear-gradient(rgba(251, 247, 239, 0.86), rgba(251, 247, 239, 0.86)), url("../img/cafe/cafe-banner-small.webp") center / cover; border-radius: 18px; padding: 32px; box-shadow: 0 10px 0 rgba(74, 44, 24, 0.15); }
+.owner-portrait { flex: 0 0 300px; max-width: 100%; aspect-ratio: 3 / 4; background: var(--paper); border-radius: 50% 50% 16px 16px; border: 6px solid var(--wood); box-shadow: 0 8px 0 var(--wood-deep); display: flex; align-items: flex-end; justify-content: center; overflow: hidden; }
+.owner-portrait img { width: 100%; height: 100%; object-fit: contain; object-position: bottom; }
+.owner-intro { flex: 1 1 360px; display: flex; flex-direction: column; gap: 12px; }
+.owner-intro h1 { font-size: clamp(36px, 5vw, 52px); }
+.owner-role { margin: 0; font-weight: 700; color: var(--wood-dark); }
+.speech { position: relative; margin: 6px 0 0; background: #fff; border: 2px solid var(--wood-light); border-radius: 16px; padding: 18px 20px; font-size: 17px; line-height: 1.7; }
+.speech::before { content: ""; position: absolute; left: -12px; top: 26px; width: 20px; height: 20px; background: #fff; border-left: 2px solid var(--wood-light); border-bottom: 2px solid var(--wood-light); transform: rotate(45deg); }
+.owner-stats { display: flex; gap: 12px; flex-wrap: wrap; }
+.owner-stats div { background: var(--wood-dark); color: var(--paper); border-radius: 12px; padding: 10px 18px; display: flex; align-items: baseline; gap: 8px; }
+.owner-stats b { font-family: var(--font-title); font-weight: 400; font-size: 28px; color: var(--yellow); }
+.owner-stats span { font-size: 14px; }
+.owner-grid { margin-top: 28px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; }
+.player-card { background: var(--chalk); color: #edeae0; border: 10px solid var(--wood); border-radius: 14px; padding: 24px; box-shadow: 0 8px 0 rgba(74, 44, 24, 0.25); }
+.player-card h2 { font-size: 26px; color: #f2d16b; margin-bottom: 14px; }
+.player-card dl { margin: 0; display: flex; flex-direction: column; gap: 12px; }
+.player-row { display: flex; gap: 14px; align-items: center; background: rgba(255, 255, 255, 0.06); border-radius: 10px; padding: 12px 14px; }
+.player-row .spec-icon { background: var(--yellow); color: var(--chalk); }
+.player-row dt { font-size: 13px; color: #b8c4bc; font-weight: 700; }
+.player-row dd { margin: 2px 0 0; font-size: 18px; font-weight: 500; }
+.owner-side { display: flex; flex-direction: column; gap: 24px; }
+.likes, .story-note { background: var(--paper); border-radius: 14px; padding: 22px 24px; box-shadow: 0 5px 0 var(--wall-dark); }
+.likes h2, .story-note h2 { font-size: 24px; margin-bottom: 12px; }
+.likes ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.likes li { background: var(--yellow); color: var(--ink); border-radius: 999px 999px 8px 8px; padding: 8px 16px 6px; font-weight: 700; font-size: 15px; box-shadow: 0 3px 0 #b9811c; }
+.story-note { background-image: repeating-linear-gradient(0deg, transparent 0 31px, rgba(122, 74, 43, 0.08) 31px 32px); border-top: 10px solid var(--red); }
+.story-note p { margin: 0; font-size: 16px; line-height: 2; }
+.owner-actions { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
+
 @media (max-width: 760px) {
   main { padding: 24px 16px 48px; }
   .suggest-layout { grid-template-columns: 1fr; }
@@ -254,6 +284,10 @@ fieldset.field { border: 0; padding: 0; margin: 0 0 18px; }
   .floor-items { min-height: 160px; }
   .props .prop ~ .prop { display: none; }
   .lobby-bottom { grid-template-columns: 1fr; }
+  .owner-grid { grid-template-columns: 1fr; }
+  .owner-hero { padding: 20px; }
+  .owner-portrait { flex-basis: 220px; margin: 0 auto; }
+  .speech::before { display: none; }
   .lobby-hero { min-height: 0; padding: 140px 14px 14px; background-image: url("../img/cafe/cafe-banner-small.webp"); background-position: 70% top; background-size: auto 260px; background-color: var(--paper); }
   .hero-text { padding: 20px; }
   .cover-art { width: 120px; }
