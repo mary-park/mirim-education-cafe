@@ -66,6 +66,7 @@ const OWNER_ICONS = {
       <div class="owner-actions">
         <a class="btn btn--primary" href="collection.html">사장님이 만든 박스 보기</a>
         <a class="btn btn--ghost" href="suggest.html">사장님께 확장팩 제안하기</a>
+        ${owner.workshop && owner.workshop.startsWith("https://") ? `<a class="workshop-link" href="${escapeHtml(owner.workshop)}" target="_blank" rel="noopener">카페 사장 작업실 <span>사장님 전용</span></a>` : ""}
       </div>`;
   } catch (e) {
     showError(el, "사장님 소개를 불러오지 못했어요.");

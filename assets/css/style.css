@@ -275,7 +275,10 @@ fieldset.field { border: 0; padding: 0; margin: 0 0 18px; }
 .likes li { background: var(--yellow); color: var(--ink); border-radius: 999px 999px 8px 8px; padding: 8px 16px 6px; font-weight: 700; font-size: 15px; box-shadow: 0 3px 0 #b9811c; }
 .story-note { background-image: repeating-linear-gradient(0deg, transparent 0 31px, rgba(122, 74, 43, 0.08) 31px 32px); border-top: 10px solid var(--red); }
 .story-note p { margin: 0; font-size: 16px; line-height: 2; }
-.owner-actions { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
+.owner-actions { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.workshop-link { margin-left: auto; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 14px; border-radius: 10px; color: var(--soft, #5c4a3c); font-size: 14px; font-weight: 500; text-decoration: none; border: 1.5px dashed var(--wood-light); }
+.workshop-link span { font-size: 12px; background: var(--wall-dark); border-radius: 999px; padding: 1px 8px; }
+.workshop-link:hover { color: var(--wood-deep); background: var(--paper); }
 
 @media (max-width: 760px) {
   main { padding: 24px 16px 48px; }
